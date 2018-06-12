@@ -1,0 +1,12 @@
+/node_modules/
+/设计图/
+/.tmp/
+/.sass-cache/
+/bower_components/
+/.idea/
+/app/lessionnew/
+/dist/
+/.svn/
+/FlexPaper_2.3.6/
+/.vscode/
+/package-lock.json

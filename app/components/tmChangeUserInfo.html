@@ -1,0 +1,119 @@
+<!--修改信息-->
+<div class="changeUserInfo">
+  <div common-header title-header="'个人资料'" show-more=false link-url="''"></div>
+
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="personalCenter">个人中心</a></li>
+      <li class="active">个人资料</li>
+    </ol>
+    <div class="change-user-info" dw-loading="changeUserInfo">
+      <form class="form-horizonta">
+        <!-- <div class="form-group">
+          <label class="col-sm-2">账&nbsp;&nbsp; 号：</label>
+          <div class="col-sm-10">{{userInfo.Account}}</div>
+        </div> -->
+        <div class="form-group">
+          <label class="col-sm-2">姓&nbsp;&nbsp; 名：</label>
+          <div class="col-sm-10">{{userInfo.Name}}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2">性&nbsp;&nbsp; 别：</label>
+          <div ng-if="userInfo.Sex=='1'" class="col-sm-10">男</div>
+          <div ng-if="userInfo.Sex=='0'" class="col-sm-10">女</div>
+        </div>
+        <!-- ng-if="messageList.Status=='UnApprove'" -->
+        <!-- <div class="form-group">
+          <label class="col-sm-2">性&nbsp;&nbsp; 别：</label>
+          <div class="col-sm-10">
+            <label class="radio-inline">
+              <input type="radio" name="sex" ng-model="sex" value="男" ng-checked="userInfo.Sex==1">男
+            </label>
+            <label class="radio-inline">
+              <input type="radio" name="sex" ng-model="sex" value="女" ng-checked="userInfo.Sex==0">女
+            </label>
+          </div>
+        </div> -->
+        <div class="form-group">
+          <label class="col-sm-2">身份证：</label>
+          <div class="col-sm-10">{{userInfo.IdCard}}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2 control-label">手&nbsp;&nbsp; 机：</label>
+          <div class="col-sm-10" >{{userInfo.Mobile}}</div>
+           <!--<div class="col-sm-10 ">
+            <input type="tel" ng-model="Mobile" name="mobile"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：123-4567-8901"
+            />
+          </div> -->
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2">罪&nbsp;&nbsp; 名：</label>
+          <div class="col-sm-10">{{userInfo.CrimeName}}</div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-2">服刑时间:</label>
+          <div class="col-sm-10">{{userInfo.ServeDuration}}</div>
+        </div>
+        <!-- <div class="form-group">
+          <label class="col-sm-2">部&nbsp;&nbsp; 门：</label>
+          <div class="col-sm-10">{{userInfo.GroupName}}</div>
+        </div> -->
+        <!-- <div class="form-group">
+          <label class="col-sm-2 control-label">职&nbsp;&nbsp; 位：</label>
+          <div class="col-sm-10 ">
+            <select class="form-control select-grade" name="grade" ng-model="Grade"
+                    ng-options="list.Id as list.Name for list in gradeList">
+              <option value="">--请选择职位--</option>
+            </select>
+          </div>
+        </div> -->
+        <!-- <div class="form-group">
+          <label class="col-sm-2 control-label">职&nbsp;&nbsp; 务：</label>
+          <div class="col-sm-10 ">
+            <input type="text" ng-model="Business" name="business"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：老师"
+            />
+          </div>
+        </div> -->
+       <!--  <div class="form-group">
+          <label class="col-sm-2 control-label">电&nbsp;&nbsp; 话：</label>
+          <div class="col-sm-10 ">
+            <input type="tel" ng-model="Tel" name="tel"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：0571-88776655"
+            />
+          </div>
+        </div> -->
+        
+        <!-- <div class="form-group">
+          <label class="col-sm-2 control-label">邮&nbsp;&nbsp; 箱：</label>
+          <div class="col-sm-10 ">
+            <input type="tel" ng-model="Email" name="email"
+                   class="form-control"
+                   my-placeholder
+                   placeholder="例：example@email.com"
+            />
+          </div>
+        </div> -->
+        <!-- <div class="form-group">
+          <div class="col-sm-offset-2 col-sm-10">
+            <button class="btn btn-primary" ng-click="changeUser()"> 提交</button>
+          </div>
+        </div> -->
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+
+

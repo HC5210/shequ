@@ -1,0 +1,59 @@
+/**
+ * 问卷调查详情
+ */
+@import "../styles/mixins";
+
+.pollReview {
+  min-height: 700px;
+  background-color: @background-color-base;
+  .exam_top {
+    margin: 0 auto;
+    padding: 10px 0;
+    .text-center();
+  }
+  .examReviewForm {
+    table{
+      width: 100%;
+    }
+    padding: 20px;
+    tr {
+      td {
+        .text-left();
+        padding: 5px 15px;
+      }
+    }
+  }
+  .pollReview_result {
+    width: 70%;
+    .title {
+      font-size: 15px;
+      background-color: @tab-header-bg;
+      line-height: 25px;
+    }
+  }
+  .poll_percent {
+    width: 30%;
+    table {
+      width: 100%;
+      margin-top: 25px;
+    }
+    .percent_title {
+      width: 40%;
+      text-align: right;
+    }
+    .list2 {
+      width: 60%;
+      .progress {
+        margin-top: 2px;
+        .ht-lineHt(17px);
+      }
+    }
+  }
+  .review_questionsItems {
+    tr {
+      td {
+        padding: 5px 30px;
+      }
+    }
+  }
+}

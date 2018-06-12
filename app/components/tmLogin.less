@@ -1,0 +1,87 @@
+/**
+ * 登录页
+ */
+@import "../styles/mixins";
+
+.tmLogin {
+  .form-signin {
+    max-width: 380px;
+    padding: 15px 35px 45px;
+    margin: 0 auto;
+    border: 1px solid #ededed;
+    box-shadow: 0px 0px 20px #e6e6e6;
+    position: relative;
+    .form-group {
+      input {
+        display: inline-block;
+        .wh(100%, 44px);
+        line-height: 44px;
+      }
+      //label {
+      //  .wh(20%, 44px);
+      //  line-height: 44px;
+      //  .text-center();
+      //}
+      &.ValidateCodeform {
+        a {
+          float: right;
+          padding-top: 7px;
+          margin-right: 4%;
+        }
+        input {
+          width: 69%;
+        }
+      }
+    }
+  }
+  .loginBtn {
+    .wh(100%, 44px);
+    background:#faa601;
+    border:0;
+  }
+  .checkbox {
+    margin: 15px 0 10px 20px;
+    width:30%;
+    float:left;
+  }
+  .error {
+    visibility: hidden;
+    position: absolute;
+    top: 38px;
+    right: -85px;
+    padding: 0 8px;
+    line-height: 44px;
+    color: @error-color;
+    cursor: text;
+    font-weight: normal;
+    opacity: 0;
+    .transition();
+    &.is-visible {
+      visibility: visible;
+      opacity: 1;
+      right: 55px;
+      top: 35px;
+      .transition();
+    }
+  }
+  .error2 {
+    top: 48%;
+    right: -85px;
+    &.is-visible {
+      right: 155px;
+      top: 48%;
+    }
+  }
+  .forgetPassword {
+    text-align: center;
+    margin-top: 15px;
+    float:right;
+    a {
+      color: @text-color-2;
+      padding: 0 5px;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}

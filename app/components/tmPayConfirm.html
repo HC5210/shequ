@@ -1,0 +1,45 @@
+<!--支付确认-->
+<div class="payConfirm">
+  <div common-header title-header="'支付确认'" show-more=false link-url="''"></div>
+  <div class="tmBorder">
+    <div class="cartList" dw-loading="payConfirm">
+      <ul>
+        <div class="title clearfix">
+          <span class="list4">商品名称</span>
+          <span class="list1-5">类型</span>
+          <span class="list1-5">数量</span>
+          <span class="list1-5">单价</span>
+          <span class="list1-5">总价</span>
+        </div>
+        <li class="content clearfix" ng-repeat="list in orderDetailListData.ListData">
+          <span class="list4"><a ui-sref="courseDetails({Id:list.Id})" target="_blank" title="{{list.ProductName}}">{{list.ProductName}}</a></span>
+          <span class="list1-5">{{list.ProductType=='Course'?'课程':'图书'}}</span>
+          <span class="list1-5">{{list.Count}}</span>
+          <span class="list1-5">￥{{list.Price.toFixed(2)}}</span>
+          <span class="list1-5">￥{{list.TotalPrice.toFixed(2)}}</span>
+        </li>
+      </ul>
+      <div class="bottom clearfix">
+        <p class="bottomInfo">
+          总价: ￥{{orderDetailListData.TotalPrice.toFixed(2)}}
+        </p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="payType" ng-model="payType" id="ctl09_rblPayType_0" value="Alipay" checked>
+            <img src="images/alipay.png" alt="支付宝">
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="payType" ng-model="payType" id="ctl09_rblPayType_1" value="Wechatpay">
+            <img src="../images/weixinpay.png" alt="微信">
+          </label>
+        </div>
+        <a ng-click="goPayConfirm(payType)" class="btn btn-primary confirmBtn">确认支付</a>
+      </div>
+      <div class="payContent justify" ng-bind-html="payContent | trustHtml"></div>
+    </div>
+  </div>
+</div>
+
+

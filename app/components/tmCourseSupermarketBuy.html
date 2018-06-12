@@ -1,0 +1,127 @@
+<!--课程超市列表-->
+<div class="courseSupermarketBuy">
+  <div common-header title-header="'课程中心'" show-more=false link-url="''"></div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="courseCenter">课程中心</a></li>
+      <li ng-if="courseSupermarketData.ChannelName==''" class="active">
+        {{courseSupermarketData.TitleNav}}({{courseSupermarketData.Count}})
+      </li>
+      <li ng-if="courseSupermarketData.ChannelName!=''" class="active">
+        {{courseSupermarketData.ChannelName}}({{courseSupermarketData.Count}})
+      </li>
+    </ol>
+    <form class="form-inline formSearch">
+      <select class="form-control" ng-init="selectedName = selectText[0].id" ng-model="selectedName"
+              ng-options="x.id as x.name for x in selectText" ng-change="judgement()">
+      </select>
+      <select ng-show="showInput2" class="form-control" ng-init="selectedType = videoType[0].id" ng-model="selectedType"
+              ng-options="x.id as x.name for x in videoType"></select>
+      <div class="form-group">
+        <input ng-show="showInput1" my-placeholder ng-model="searchTitle" type="text" class="form-control"
+               placeholder="请输入搜索课程">
+        <input ng-show="showInput2" my-placeholder ng-model="searchTitle" type="text" class="form-control"
+               placeholder="请输入搜索课程">
+        <input ng-show="showInput3" my-placeholder ng-model="searchTeacher" type="text" class="form-control"
+               placeholder="请输入搜索教师">
+        <button type="submit" class="btn btn-primary searchBtn"
+                ng-click="searchCourse({page: 1,sort: 'Sort',order: 'desc',flag:'all'})">搜索
+        </button>
+      </div>
+    </form>
+    <!--<form class="form-inline formSearch">
+      <select class="form-control" ng-init="selectedName = selectText[0]" ng-model="selectedName" ng-options="x.name for x in selectText"  ng-change="judgement(selectedName.id)">
+      </select>
+      <div class="form-group">
+        <input ng-show="showInput1" my-placeholder ng-model="searchTitle1" type="text" class="form-control" placeholder="请输入要搜索的课程">
+        <select class="form-control" ng-show="showInput2"  ng-init="searchTitle2 = videoType[0]" ng-model="searchTitle2" ng-options="x.name for x in videoType"  ng-change="judgement(selectedName.id)">
+        </select>
+        <input ng-show="showInput3" my-placeholder ng-model="searchTitle3" type="text" class="form-control" placeholder="请输入主讲人">
+      </div>
+      <button ng-hide="showInput2" type="submit" class="btn btn-primary" ng-click="judgement(selectedName.id)">搜索</button>
+    </form>-->
+    <div class="courseList  mar_top_15 clearfix" dw-loading="courseSupermarket">
+      <div class="sortCourse clearfix">
+        <div class="tag">
+          <a class="recommendCourse" ng-click="getRecommendCourse()">
+            <img src="../images/recomend.png" alt="智能推荐"/>
+          </a>
+          <span><a ng-click="searchCourse({courseType:'ThreeScreenCourse',title:'',teacher:'',flag:'all'})"><img
+              src="../images/sfp.png"/> 精品三分屏</a></span>
+          <span><a ng-click="searchCourse({courseType:'SingleCourse',title:'',teacher:'',flag:'all'})"><img
+              src="../images/dsp.png"/> 单视频课件</a></span>
+          <span><a ng-click="searchCourse({courseType:'AnimationCourse',title:'',teacher:'',flag:'all'})"><img
+              src="../images/dh.png"/> 动画类课件</a></span>
+          <span><a ng-click="searchCourse({courseType:'All',flag:true})"><img
+              src="../images/biXue.png"/> 必修课件</a></span>
+          <span><a ng-click="searchCourse({courseType:'All',flag:false})"><img
+              src="../images/xuanXiu.png"/> 选修课件</a></span>
+        </div>
+
+        <!--<div class="tag clearfix" style="text-align: right;">
+          <span><img src="images/sfp.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'ThreeScreenCourse')">精品三分屏</a></span>
+          <span><img src="images/dsp.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'SingleCourse')">单视频课件</a></span>
+          <span><img src="images/dh.png"><a href="javascript:;" ng-click="judgement(selectedName.id,'AnimationCourse')">动画类课件</a></span>
+        </div>-->
+        <div class="title_bar clearfix">
+          <span class="list0-5">选课</span>
+          <span class="list2-5"><a ng-click="searchCourse({sort: 'Name'},true)">课程名称<span
+              id="asc_Name">▼</span></a></span>
+          <span class="list1-5"><a ng-click="searchCourse({sort: 'CommentCount'},true)">价格<span
+              id="asc_CommentCount">▼</span></a></span>
+          <span class="list1"><a ng-click="searchCourse({sort: 'Credit'},true)">学时<span
+              id="asc_Credit">▼</span></a></span>
+          <span class="list1"><a ng-click="searchCourse({sort: 'ClickCount'},true)">点击量<span
+              id="asc_ClickCount">▼</span></a></span>
+          <span class="list1"><a ng-click="searchCourse({sort: 'CreateDate'},true)">上线时间<span
+              id="asc_CreateDate">▼</span></a></span>
+          <span class="list1">播放</span>
+          <span class="list1-5">购买</span>
+        </div>
+      </div>
+
+      <div class="NewCourseList">
+        <ul>
+          <li ng-repeat="courseList in courseSupermarketData.ListData" class="clearfix">
+            <p class="list0-5">
+              <input ng-disabled="{{courseList.Learning>=0?1:0}}" name="subcheck" type="checkbox" class="check"
+                     value={{courseList.Id}}>
+            </p>
+            <p class="list2-5 courseName"><a ui-sref="courseDetails({Id:courseList.Id})" target="_blank"
+                                             title="{{courseList.Name}}">{{courseList.Name}}</a></p>
+            <p class="list1-5 money">￥{{courseList.Price.toFixed(2)}}</p>
+            <p class="list1">{{courseList.Credit.toFixed(1)}}</p>
+            <p class="list1">{{courseList.ClickCount}}</p>
+            <p class="list1">{{courseList.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</p>
+            <p class="list1">
+              <a ng-if="courseList.ShopStatus=='HasBuy'||courseList.ShopStatus=='Free'"
+                 ui-sref="play({Id:courseList.Id})" target="_blank" class="play">播放</a>
+              <a ng-if="courseList.ShopStatus=='NoBuy'||courseList.ShopStatus=='InShoppingCart'||courseList.ShopStatus=='InOrder'"
+                 ui-sref="tryplay({Id:courseList.Id})" target="_blank" class="play">试看</a>
+            </p>
+            <p class="list1-5">
+              <button ng-if="courseList.ShopStatus=='HasBuy'" class="btn btn-success" disabled>已购买</button>
+              <button ng-if="courseList.ShopStatus=='Free'" class="btn btn-success" disabled>免费课程</button>
+              <button ng-if="courseList.ShopStatus=='NoBuy'" ng-click="addCourseToCart(courseList.Id)"
+                      class="btn btn-primary">加入购物车
+              </button>
+              <button ng-if="courseList.ShopStatus=='InShoppingCart'" class="btn btn-default" disabled>已加入购物车</button>
+              <button ng-if="courseList.ShopStatus=='InOrder'" class="btn btn-default" disabled>已下单</button>
+            </p>
+          </li>
+        </ul>
+      </div>
+      <p ng-show="!paginationConf.totalItems" class="result">暂无数据</p>
+      <div class="clearfix">
+        <div class="checkCourse pull-left">
+          <a class="btn btn-default" ng-click="checkAll()">全选</a>
+          <a class="btn btn-default" ng-click="selectInvert()">反选</a>
+          <a class="btn btn-default" ng-click="ckBatch()">批量加入购物车</a>
+        </div>
+        <div ng-transclude="pagation" ng-show="paginationConf.totalItems"></div>
+      </div>
+    </div>
+  </div>
+</div>

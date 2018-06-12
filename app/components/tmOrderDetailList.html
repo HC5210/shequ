@@ -1,0 +1,50 @@
+<!--订单详细-->
+<div class="orderDetailList">
+  <div common-header title-header="'订单详细'" show-more=false link-url="''"></div>
+  <div class="tmBorder">
+    <h3 class="shoppingTitle"><span class="verticalLine"></span>订单详细</h3>
+    <div class="cartList" dw-loading="orderDetailList">
+      <ul>
+        <div class="title clearfix">
+          <span class="list3">商品名称</span>
+          <span class="list1">类型</span>
+          <span class="list1">数量</span>
+          <span class="list1-5">单价</span>
+          <span class="list1-5">总价</span>
+          <span class="list1-5">状态</span>
+        </div>
+        <li class="content clearfix" ng-repeat="list in orderDetailListData.ListData">
+          <span class="list3"><a ui-sref="courseDetails({Id:list.Id})" target="_blank" title="{{list.ProductName}}">{{list.ProductName}}</a></span>
+          <span class="list1">{{list.ProductType=='Course'?'课程':'图书'}}</span>
+          <span class="list1">{{list.Count}}</span>
+          <span class="list1-5">￥{{list.Price.toFixed(2)}}</span>
+          <span class="list1-5">￥{{list.TotalPrice.toFixed(2)}}</span>
+
+          <span ng-if="orderDetailListData.OrderStatus=='NoPay'" class="list1-5">等待付款</span>
+          <span ng-if="orderDetailListData.OrderStatus=='HasPay'" class="list1-5">交易成功</span>
+          <span ng-if="orderDetailListData.OrderStatus=='Close'" class="list1-5">交易关闭</span>
+        </li>
+      </ul>
+      <div class="bottom clearfix" ng-if="orderDetailListData.OrderStatus=='NoPay'">
+        <p class="bottomInfo">
+          状态:等待付款
+        </p>
+        <div class="radio">
+          <label>
+            <input type="radio" name="payType" ng-model="payType" id="ctl09_rblPayType_0" value="1" checked>
+            在线支付： 本网与第三方支付平台合作提供在线支付功能，您可以放心的支付各种款项。
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="payType" ng-model="payType" id="ctl09_rblPayType_1" value="2">
+            现金面付： 您可以直接前往收费点，当面支付现金，立即开通课程。
+          </label>
+        </div>
+        <span class="totalPrice">总价：¥{{orderDetailListData.TotalPrice.toFixed(2)}}</span>
+        <a ng-click="goPayConfirm(payType)" class="btn btn-primary">去支付</a>
+      </div>
+    </div>
+  </div>
+</div>
+

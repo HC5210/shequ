@@ -1,0 +1,117 @@
+/**
+ * 个人中心
+ */
+@import "../styles/mixins";
+
+.myCenter {
+  .modal-footer {
+    .text-center();
+  }
+  .table {
+    input {
+      width: 320px;
+    }
+    td {
+      .text-left();
+    }
+  }
+  .seaNote a {
+    padding: 0 15px;
+  }
+  .newNote {
+    padding: 2px 12px;
+  }
+  .content_page {
+    line-height: 26px;
+  }
+  .del {
+    vertical-align: middle;
+    display: inline-block;
+    .wh(100%, 100%);
+  }
+}
+.myTab{
+.nav-tabs{
+  li{
+  .play{
+        .wh(120px, 40px);
+              border: none;
+              background-color: @primary-color;
+              color: @white;
+              margin-top: 5px;
+              display: block;
+              margin-right: 10px;
+              .text-center();
+              .border-radius();
+              &:hover {
+                background-color: lighten(@primary-color, 3%);
+              }
+      }
+  }
+}
+}
+
+    
+    .myCenterlist {
+      .text-center();
+      font-size: 12px;
+      border-top: 1px solid @border-color-base;
+      ul {
+        li {
+          border-bottom: 1px solid @border-color-base;
+          padding-top: 10px;
+          .line span {
+            display: inline-block;
+          }
+          .block2 {
+            height: 84px;
+            img {
+              .wh(110px, 74px);
+            }
+          }
+          .block3 {
+            .text-left();
+            width: 61%;
+            margin-left: 15px;
+            .clearFix();
+            .CourseName {
+              font-size: @font-size-base + 1;
+              line-height: 22px;
+              width: 85%;
+              padding-left:10px;
+              .ellipsis();
+            }
+            .line3, .line2 {
+              line-height: 25px;
+              a {
+                font-size: @font-size-sm;
+              }
+            }
+          }
+          .block4 {
+            .onlineDate {
+              display: block;
+              margin-right: 10px;
+            }
+            .play {
+              .wh(97px, 27px);
+              border: none;
+              background-color: @primary-color;
+              color: @white;
+              margin-top: 10px;
+              display: block;
+              margin-right: 10px;
+              .text-center();
+              line-height: 27px;
+              .border-radius();
+              &:hover {
+                background-color: lighten(@primary-color, 3%);
+              }
+            }
+          }
+        }
+      }
+    }
+  
+
+

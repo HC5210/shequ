@@ -1,0 +1,71 @@
+<div class="historydetail" dw-loading="historydetail">
+  <div common-header title-header="'历史学习列表'" show-more=false link-url="''"></div>
+  <div class="tmBorder">
+    <ol class="breadcrumb">
+      <li class="currentPosition"><i class="fa fa-cog fa-lg" aria-hidden="true"></i></span> 您的当前位置:</li>
+      <li><a ui-sref="main">首页</a></li>
+      <li><a ui-sref="personalCenter">个人中心</a></li>
+      <li><a >历史学习记录</a></li>
+      <!-- <li ng-if="courseSupermarketData.ChannelName==''" class="active">
+        {{courseSupermarketData.TitleNav}}({{courseSupermarketData.Count}})
+      </li>
+      <li ng-if="courseSupermarketData.ChannelName!=''" class="active">
+        {{courseSupermarketData.ChannelName}}({{courseSupermarketData.Count}})
+      </li> -->
+    </ol>
+    <div class="user_detail">
+          <span>应完成学时:{{monthListdata.Info.RequiredCredit}}</span>
+          <span>实际完成学时:{{monthListdata.Info.Credit}}</span>
+          <span>是否合格：
+            <a ng-if="!monthListdata.Info.Ispass">不合格</a>
+            <a ng-if="monthListdata.Info.Ispass">合格</a>
+          </span>
+    </div>
+    <div class="historyList   mar_top_15 clearfix ">
+              <ul>
+                <li class="clearfix" ng-repeat="courseList in monthListdata.ThisMonth">
+                  <!-- <div class="block1 pull-left">
+                    <input ng-disabled="{{courseList.Learning>=0?1:0}}" name="subcheck" type="checkbox" class="check"
+                           value={{courseList.Id}}>
+                  </div> -->
+                  <div class="block2 pull-left" title="{{courseList.Name}}">
+                    <img ng-src="{{courseList.ImageCourse+courseList.Img}}" err-src="images/notCourse.png">
+                  </div>
+                  <div class="block3 pull-left">
+                    <div class="line line1">
+                      <!-- ui-sref="courseDetails({Id:courseList.Id})" -->
+                      <a class="CourseName pull-left"  target="_blank"
+                         title="{{courseList.Name}}">
+                        {{courseList.Name}}
+                      </a>
+                     <!--  <span class="pull-right"
+                            ng-class="{'biXiu':courseList.RequiredFlag,'xuanXiu':!courseList.RequiredFlag}"></span> -->
+                    </div>
+                    <div class="line line3">
+                      <span style="width:130px;">进度：{{courseList.BrowseScore}}%</span>
+                      <span style="width:108px;">主讲人：{{courseList.Teacher}}</span>
+                      <span>学时：{{courseList.Credit}}</span>
+                      <span>获得学时：{{courseList.UserCredit}}</span>
+                    </div>
+                    <!-- <div class="line line2">
+                      <span style="width: 72px"><a>评论：({{courseList.CommentCount}})</a></span>
+                      <span style="width: 108px">
+                      <span style="width:36px;">试卷：</span><span>{{courseList.Exam==0?'无':Exam}}</span>
+                    </span>
+                      <span>
+                      <span>选课状态：</span>
+                      <span class="highlight">{{courseList.Learning>=0?"已选课":"未选课"}}</span>
+                    </span>
+                    </div> -->
+                  </div>
+                  <!-- <div class="block4 pull-right">
+                    <span class="onlineDate">上线日期：{{courseList.CreateDate | dateFilter | date:'yyyy-MM-dd'}}</span>
+                    <a ui-sref="courseDetails({Id:courseList.Id})" target="_blank" class="play pull-right">点击播放</a>
+                  </div> -->
+                </li>
+              </ul>
+              <!-- <p ng-show="!paginationConf.totalItems" class="result">暂无数据</p> -->
+              <p ng-show=" monthListdata.ThisMonth.length == 0 " class="result">暂无数据</p>
+    </div>
+  </div>
+</div>

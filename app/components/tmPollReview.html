@@ -1,0 +1,44 @@
+<!--问卷调查详情-->
+<div class="pollReview">
+  <div class="exam_top">
+    <img src="/images/poll_top.png"/>
+  </div>
+  <form class="examReviewForm" dw-loading="examReview">
+    <table>
+      <tbody>
+      <tr ng-repeat="item in allQuestions">
+        <td class="pollReview_result">
+          <div class="title">
+            <span> {{$index+1}} </span>、 {{item.Name}}
+            <span class="xxys">您的选项 <span class="red">{{item.Answer}}</span></span>
+          </div>
+          <table class="review_questionsItems">
+            <tr ng-repeat="list in item.QuestionsItems">
+              <td>{{list.ItemFlag}} . {{list.Name}}</td>
+            </tr>
+          </table>
+        </td>
+        <td class="poll_percent">
+          <table>
+            <tr ng-repeat="list in item.QuestionsItems">
+              <td class="clearfix">
+                <span class="percent_title pull-left">共{{list.Sort}}票，占比</span>
+                <span class="list2 pull-left">
+                  <div class="progress">
+                    <div class="progress-bar progress-bar-striped" role="progressbar"
+                         aria-valuenow="{{getRatePoll(item.Score,list.Sort)}}" aria-valuemin="0" aria-valuemax="100"
+                         ng-style="{'width':getRatePoll(item.Score,list.Sort)+'%'};">
+                      {{getRatePoll(item.Score,list.Sort)}}%
+                    </div>
+                  </div>
+                </span>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
