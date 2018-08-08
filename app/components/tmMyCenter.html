@@ -73,9 +73,9 @@
                     </div>
                     <div class="line line3">
                       
-                      <div style="clear:both" class="list2">类型:<span  ng-if="unFinish.Type=='ThreeScreenCourse'">三分屏</span>
-                          <span ng-if="unFinish.Type=='AnimationCourse'">动画</span>
-                          <span  ng-if="unFinish.Type=='SingleCourse'">单视频</span>
+                      <div style="clear:both" class="list2">类型:<span  ng-if="unFinish.Type=='ThreeScreenCourse'">讲述类</span>
+                          <span ng-if="unFinish.Type=='AnimationCourse'">动画类</span>
+                          <span  ng-if="unFinish.Type=='SingleCourse'">影视类</span>
                       </div>
                       <div class="pull-left list2-5">
                         主讲人:{{unFinish.Teacher}}
@@ -118,9 +118,9 @@
             </div>
             <div class="list0-75">{{unFinish.Credit}}</div>
             <!-- <div class="list0-75">{{unFinish.Type}}</div> -->
-            <div class="list0-75" ng-if="unFinish.Type=='ThreeScreenCourse'">三分屏</div>
-            <div class="list0-75" ng-if="unFinish.Type=='AnimationCourse'">动画</div>
-            <div class="list0-75" ng-if="unFinish.Type=='SingleCourse'">单视频</div>
+            <div class="list0-75" ng-if="unFinish.Type=='ThreeScreenCourse'">讲述类</div>
+            <div class="list0-75" ng-if="unFinish.Type=='AnimationCourse'">动画类</div>
+            <div class="list0-75" ng-if="unFinish.Type=='SingleCourse'">影视类</div>
             <div class="list0-75"><a ui-sref="play({Id:unFinish.Id})" target="_blank">播放</a></div>
             <div class="list0-75" ng-if="unFinish.NoteFlag"><a ng-click="seeNote(unFinish.Id,unFinish.Name)"
                                                                data-toggle="modal" data-target=".notemodal">查看</a></div>

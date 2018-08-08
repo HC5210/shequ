@@ -44,7 +44,8 @@ angular.module('luZhouApp')
         $scope.userAllMessage = response.Data;
         if ($scope.userMessage.Name) {
           commonService.alertMs('用户已登录！');
-          $state.go('main');
+          // $state.go('main');
+          // window.open("about:blank", "_top").close();
         } else {
         }
       });
@@ -119,6 +120,9 @@ angular.module('luZhouApp')
               $scope.showError = true;
             } else if (data.Type == 1) {
               setUserCookie();
+              if(data.Value == '管理员'){
+                window.location.href = "/admin"
+              }
               if ($stateParams.name) {
                 $state.go($stateParams.name, JSON.parse($stateParams.params));
               }else if($stateParams.page == "admin"){
@@ -151,7 +155,20 @@ angular.module('luZhouApp')
               $scope.showValidateCodeError = true;
               $scope.getVerifyCode();
             } else if (data.Type == 10) {
-              commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
+              console.log(data.Message);
+              var str=data.Message;
+              var account=str.split(",");
+              
+              var url=account[0];
+              var name=account[1];
+              var pass=account[2];
+              window.location.href =  'http://'+url+'/#/?name='+encodeURIComponent(name)+'&pass='+encodeURIComponent(pass);
+
+              // commonService.alertMs("您还不是本平台成员，将为您转向您所在的平台：" + data.Message, 2);
+              // var  conf = confirm("您还不是本平台成员，将为您转向您所在的平台");
+              // if (conf == true){
+              //   window.location.href =  'http://'+url+'/#/?name='+encodeURIComponent(name)+'&pass='+encodeURIComponent(pass);
+              // }
               $scope.getVerifyCode();
               return;
             } else if (data.Type == 11) {

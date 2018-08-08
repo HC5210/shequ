@@ -342,6 +342,13 @@ angular
         controller: 'PlayCtrl',
         controllerAs: 'play'
       })
+      .state('testplay', {
+        url: '/play/testplay?Id&t',
+        data: {title: "课程播放"},
+        templateUrl: 'views/play/testplay.html',
+        controller: 'TestplayCtrl',
+        controllerAs: 'testplay'
+      })
       .state('tryplay', {
         url: '/play/tryplay?Id',
         data: {title: "课程试看"},

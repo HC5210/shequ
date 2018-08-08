@@ -2,13 +2,13 @@
 
 /**
  * @ngdoc function
- * @name luZhouApp.controller:PlayCtrl
+ * @name luZhouApp.controller:TestplayCtrl
  * @description
- * # PlayCtrl
+ * # TestplayCtrl
  * Controller of the luZhouApp
  */
 angular.module('luZhouApp')
-  .controller('PlayCtrl', function ($scope, $http, $timeout, $interval, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams, $sce) {
+  .controller('TestplayCtrl', function ($scope, $http, $timeout, $interval, $rootScope, $cookieStore, commonService, $location, $loading, $stateParams, $sce) {
     $scope.Id = $stateParams.Id;
     $scope.token = commonService.AntiForgeryToken();
     $scope.PlayListFlag= $stateParams.t;
@@ -19,8 +19,8 @@ angular.module('luZhouApp')
     var loadOnce = 0;
     var browseScore = 0;
     $scope.loadPlayInfo = function () {
-      commonService.getData(ALL_PORT.Play.url, 'POST',
-        $.extend({}, ALL_PORT.Play.data, {id: $scope.Id,t: $scope.PlayListFlag?2:''}))
+      commonService.getData(ALL_PORT.TestPlay.url, 'POST',
+        $.extend({}, ALL_PORT.TestPlay.data, {id: $scope.Id,t: $scope.PlayListFlag?2:''}))
         .then(function (response) {
           if (response.Status == 200) {
             $scope.userId = response.Data.UserId;
@@ -136,7 +136,7 @@ angular.module('luZhouApp')
             width: "100%",
             height: "100%"
           });
-          console.log($scope.playMp4Data.Url);
+          
           var _sendProcess = function () {
             if (_thePlayer.getPosition()) {
               var data = $.extend({}, {
@@ -816,3 +816,4 @@ angular.module('luZhouApp')
     };
     queryDetail();
   });
+

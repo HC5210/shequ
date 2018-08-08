@@ -4582,6 +4582,9 @@ input[type="checkbox"]:focus {
   color: #999;
   margin-left: 30px;
 }
+.footer .footerBg p a {
+  color: #999;
+}
 /**
  * 忘记密码
  */

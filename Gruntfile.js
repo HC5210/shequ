@@ -116,28 +116,28 @@ module.exports = function (grunt) {
         {
           context: '/api',
           host: '122.225.101.117',
-          port: 9061,
+          port: 9072,
           https: false,
           changeOrigin: true
         },
         {
           context: '/api2017',
           host: '122.225.101.117',
-          port: 9061,
+          port: 9072,
           https: false,
           changeOrigin: true
         },
         {
           context: '/lessionnew',
           host: '122.225.101.117',
-          port: 9061,
+          port: 9072,
           https: false,
           changeOrigin: true
         },
         {
           context: '/Content',
           host: '122.225.101.117',
-          port: 9061,
+          port: 9072,
           https: false,
           changeOrigin: true
         }

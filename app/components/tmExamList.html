@@ -37,8 +37,8 @@
             <span class="list2-5">考试时间</span>
           </div>
           <div class="list" ng-repeat="unFinish in TotalData.UnfinishModel">
-            <span class="list3-5 ellipsis" title="{{unFinish.Name}}"><a target="_blank"
-                                                                        ng-click="havTest(unFinish.Id,e)">{{unFinish.Name}}</a></span>
+            <span class="list3-5 ellipsis" title="{{unFinish.Name}}">
+              <a target="_blank" ng-click="havTest(unFinish.Id,e)">{{unFinish.Name}}</a></span>
             <span class="list1">{{unFinish.CreditHour}}</span>
             <span class="list1">{{unFinish.TimeLimit}}</span>
             <span class="list1-5"><a ng-click="havTest(unFinish.Id)">参加测试</a></span>

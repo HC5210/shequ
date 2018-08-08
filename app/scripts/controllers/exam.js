@@ -129,6 +129,7 @@ angular.module('luZhouApp')
             window.close();
           });
       }
+      console.log('考试参数'+params);
     };
     
     $scope.replaceInput = function (name) {

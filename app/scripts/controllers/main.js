@@ -162,6 +162,13 @@ angular.module('luZhouApp')
         $loading.finish('noticeAnnouncement');
         $scope.noticeData = response.Data;
       });
+
+      commonService.getData('/api/admin/Summary/GetAdminHomeMapDatalistById?id=2', 'POST',
+      $.extend({}, ALL_PORT.noticeAnnouncement.data, {rows: 3}))
+      .then(function (response) {
+        // $loading.finish('noticeAnnouncement');
+        // $scope.noticeData = response.Data;
+      });
     $scope.startSlide = function () {
       setTimeout(function () {
         $('.noticeSlide').bxSlider({

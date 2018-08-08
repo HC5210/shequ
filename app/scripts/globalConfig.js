@@ -807,6 +807,11 @@ var ALL_PORT = {
     url: API_URL + "/Home/Play",
     data: {id: ''}
   },
+  //测试看播放信息
+  TestPlay: {
+    url: API_URL + "/Course/TestPlay",
+    data: {id: ''}
+  },
   //刷新播放进度
   Refresh: {
     url: API_URL + "/CourseProcess/Refresh",
